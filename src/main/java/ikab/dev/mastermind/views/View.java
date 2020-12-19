@@ -1,19 +1,14 @@
 package ikab.dev.mastermind.views;
 
-import ikab.dev.mastermind.controllers.ProposeCombinationController;
-import ikab.dev.mastermind.controllers.ResumeController;
-import ikab.dev.mastermind.controllers.StartController;
+import ikab.dev.mastermind.controllers.Logic;
 
 public abstract class View {
 
-    protected StartController startController;
-    protected ResumeController resumeController;
-    protected ProposeCombinationController proposeCombinationController;
+    protected Logic logic;
 
-    public View(StartController startController, ResumeController resumeController, ProposeCombinationController proposeCombinationController) {
-        this.startController = startController;
-        this.resumeController = resumeController;
-        this.proposeCombinationController = proposeCombinationController;
+
+    public View(Logic logic) {
+        this.logic = logic;
     }
 
     public void interact() {

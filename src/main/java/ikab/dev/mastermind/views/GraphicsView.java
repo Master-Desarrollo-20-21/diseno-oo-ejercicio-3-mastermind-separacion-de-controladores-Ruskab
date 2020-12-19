@@ -1,14 +1,12 @@
 package ikab.dev.mastermind.views;
 
-import ikab.dev.mastermind.controllers.ProposeCombinationController;
-import ikab.dev.mastermind.controllers.ResumeController;
-import ikab.dev.mastermind.controllers.StartController;
+import ikab.dev.mastermind.controllers.Logic;
 
 public class GraphicsView extends View {
 
 
-    public GraphicsView(StartController startController, ResumeController resumeController, ProposeCombinationController proposeCombinationController) {
-        super(startController, resumeController, proposeCombinationController);
+    public GraphicsView(Logic logic) {
+        super(logic);
     }
 
     @Override

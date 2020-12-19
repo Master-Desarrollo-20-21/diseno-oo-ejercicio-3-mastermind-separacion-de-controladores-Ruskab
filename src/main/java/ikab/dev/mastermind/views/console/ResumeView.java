@@ -1,15 +1,15 @@
 package ikab.dev.mastermind.views.console;
 
-import ikab.dev.mastermind.controllers.ResumeController;
+import ikab.dev.mastermind.controllers.Logic;
 import ikab.dev.mastermind.utils.Console;
 import ikab.dev.mastermind.views.Message;
 
 public class ResumeView {
 
-    ResumeController resumeController;
+    private final Logic logic;
 
-    public ResumeView(ResumeController resumeController) {
-        this.resumeController = resumeController;
+    public ResumeView(Logic logic) {
+        this.logic = logic;
     }
 
     public boolean isResume() {
