@@ -19,7 +19,7 @@ public class ProposeCombinationController extends Controller {
         return game.getAttemptsCount();
     }
 
-    public List<Attempt> getPlayerAttempts() {
+    public List<Attempt> getPlayedAttempts() {
         return game.getPlayedAttempts();
     }
 

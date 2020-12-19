@@ -1,20 +1,20 @@
 package ikab.dev.mastermind.views.console;
 
-import ikab.dev.mastermind.controllers.StartController;
+import ikab.dev.mastermind.controllers.Logic;
 import ikab.dev.mastermind.utils.Console;
 
 import static ikab.dev.mastermind.views.Message.TITLE;
 
 public class StartView {
 
-    private final StartController startController;
+    private final Logic logic;
 
-    public StartView(StartController startController) {
-        this.startController = startController;
+    public StartView(Logic logic) {
+        this.logic = logic;
     }
 
     public void start() {
-        startController.initGame();
+        logic.initGame();
         Console.getInstance().write(TITLE.getMessage());
     }
 }
