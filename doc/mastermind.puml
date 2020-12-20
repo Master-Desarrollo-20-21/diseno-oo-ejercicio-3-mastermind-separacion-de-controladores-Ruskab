@@ -8,89 +8,66 @@ skinparam {
     ControlBorderColor #718c00
     EntityBackgroundColor #F2AC4E
     EntityBorderColor black
+    ArrowColor black
+
 }
 
 package mastermind {
 
 abstract class Mastermind
 class ConsoleMastermind
-class GraphicMastermind
 
 package controllers {
     class Controller
-    class ProposeCombinationController
+    class Logic {
+        <color:red>playCombination()
+        <color:red>initGame()
+    }
+    class ProposeCombinationController{
+            <color:red>playCombination()
+    }
     class ResumeController
-    class StartController
+    class StartController{
+    <color:red>initGame()
+    }
 }
 
 package models {
-
     class Game
-    class Combination
-    class SecretCombination
-    class ProposedCombination
-    Enum Color
-    class Attempt
-    class Error
-
 }
-package utils {
-    class Console
-}
-
-
 
 package views {
 
-    class ErrorView
-    class Message
     class View
-    class GraphicView
     class ConsoleView
 
     package console{
         class StartView
         class ProposedCombinationView
-        class ResumeView
         class GameView
 }
 
 
-    package graphics {
-
-    }
 
 }
-Mastermind .[#blue]down....> models
-Mastermind .[#blue]down.> views
-Mastermind .[#blue]down.> controllers
 
-views .[#blue]down.> utils
-
+Mastermind *-- View
+Mastermind *---[#green]- Logic
 Mastermind <|-up- ConsoleMastermind
-Mastermind <|-up- GraphicMastermind
 View <|-- ConsoleView
-View <|-- GraphicView
-
+View -[#green]-> Logic
+Logic *-- Game
+Logic *-[#green]-- ProposeCombinationController
+Logic *-[#green]-- ResumeController
+Logic *-[#green]-- StartController
 
 ConsoleView *-- GameView
-ConsoleView *-- ResumeView
 ConsoleView *-- StartView
+
 GameView *-- ProposedCombinationView
-GameView .[#grey]..> Message
-ResumeView .[#grey].> Message
-ProposedCombinationView .[#grey].> ErrorView
-
-Combination <|-- ProposedCombination
-Combination <|-- SecretCombination
-Attempt o-- ProposedCombination
-Attempt o-- SecretCombination
-Combination *-- "*" Color
-Game *-- SecretCombination
-Game *-- "*" Attempt : playedAttempts
-Game *-- Attempt : currentAttempt
-GraphicView *-- graphics
-
+GameView --> Logic
+StartView --> Logic
+ProposedCombinationView --> Logic
 Controller <|-- StartController
 Controller <|-- ResumeController
 Controller <|-- ProposeCombinationController
