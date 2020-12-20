@@ -1,55 +1,36 @@
 package ikab.dev.mastermind.controllers;
 
-import ikab.dev.mastermind.models.Attempt;
-import ikab.dev.mastermind.models.Error;
 import ikab.dev.mastermind.models.Game;
-import ikab.dev.mastermind.models.ProposedCombination;
+import ikab.dev.mastermind.models.State;
+import ikab.dev.mastermind.models.StateValue;
 
-import java.util.List;
+import java.util.Map;
+
+import static ikab.dev.mastermind.models.StateValue.EXIT;
 
 public class Logic {
 
-    private final StartController startController;
-    private final ResumeController resumeController;
-    private final ProposeCombinationController proposeCombinationController;
+    private final Map<StateValue, Controller> controllers;
     private final Game game;
+    private final State state;
 
     public Logic() {
+        this.state = new State();
         this.game = new Game();
-        this.startController = new StartController(game);
-        this.resumeController = new ResumeController(game);
-        this.proposeCombinationController = new ProposeCombinationController(game);
+        this.controllers = Map.of(
+                StateValue.INITIAL, new StartController(this.game, this.state),
+                StateValue.IN_GAME, new ProposeCombinationController(game, this.state),
+                StateValue.RESUME, new ResumeController(game, this.state),
+                EXIT, new ExitController(game, this.state)
+        );
     }
 
-    public int getAttemptsCount() {
-        return proposeCombinationController.getAttemptsCount();
+    public Controller getController() {
+        return this.controllers.get(this.state.getValueState());
     }
 
-    public List<Attempt> getPlayedAttempts() {
-        return proposeCombinationController.getPlayedAttempts();
+    public boolean isExit() {
+        return EXIT.equals(this.state.getValueState());
     }
-
-    public void playCombination(ProposedCombination proposedCombination) {
-        proposeCombinationController.playCombination(proposedCombination);
-    }
-
-    public boolean isContinuePlaying() {
-        return proposeCombinationController.isContinuePlaying();
-    }
-
-    public boolean isWinnerGame() {
-        return proposeCombinationController.isWinnerGame();
-    }
-
-    public Error checkIfValidProposedCombination(String proposedCombinationCode) {
-        return this.proposeCombinationController.checkIfValidProposedCombination(proposedCombinationCode);
-    }
-
-    public void initGame() {
-        startController.initGame();
-    }
-
-
-
 
 }

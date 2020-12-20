@@ -1,16 +1,16 @@
 package ikab.dev.mastermind.utils;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Console {
 
     private static Console console = new Console();
+    private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
     public static Console getInstance() {
         return console;
     }
-
-    private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
     public String readString(String title) {
         String input = null;

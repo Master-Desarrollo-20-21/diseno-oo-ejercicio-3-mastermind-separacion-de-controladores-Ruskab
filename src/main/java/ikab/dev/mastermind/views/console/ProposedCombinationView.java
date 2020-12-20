@@ -1,6 +1,7 @@
 package ikab.dev.mastermind.views.console;
 
 import ikab.dev.mastermind.controllers.Logic;
+import ikab.dev.mastermind.controllers.ProposeCombinationController;
 import ikab.dev.mastermind.models.Error;
 import ikab.dev.mastermind.models.ProposedCombination;
 import ikab.dev.mastermind.utils.Console;
@@ -10,20 +11,14 @@ import static ikab.dev.mastermind.views.Message.PROPOSE_COMBINATION;
 
 public class ProposedCombinationView {
 
-    private final Logic logic;
-
-    public ProposedCombinationView(Logic logic) {
-        this.logic = logic;
-    }
-
-    public ProposedCombination readProposedCombination() {
+    public ProposedCombination readProposedCombination(ProposeCombinationController proposeCombinationController) {
         String proposedCombinationCode = "";
         Error error;
         do {
             proposedCombinationCode = Console.getInstance().readString(PROPOSE_COMBINATION.getMessage());
             Console.getInstance().writeln();
             Console.getInstance().writeln();
-            error = logic.checkIfValidProposedCombination(proposedCombinationCode);
+            error = proposeCombinationController.checkIfValidProposedCombination(proposedCombinationCode);
             ErrorView.of(error).writeln();
 
         } while (!error.isNull());

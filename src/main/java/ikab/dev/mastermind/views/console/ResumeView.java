@@ -1,15 +1,17 @@
 package ikab.dev.mastermind.views.console;
 
-import ikab.dev.mastermind.controllers.Logic;
+import ikab.dev.mastermind.controllers.ResumeController;
 import ikab.dev.mastermind.utils.Console;
 import ikab.dev.mastermind.views.Message;
 
 public class ResumeView {
 
-    private final Logic logic;
-
-    public ResumeView(Logic logic) {
-        this.logic = logic;
+    public void interact(ResumeController resumeController) {
+        if (isResume()) {
+            resumeController.reset();
+        } else {
+            resumeController.finish();
+        }
     }
 
     public boolean isResume() {
@@ -23,5 +25,6 @@ public class ResumeView {
     private boolean isValidInput(char input) {
         return 'y' == input || 'n' == input;
     }
+
 
 }

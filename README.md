@@ -1,9 +1,5 @@
-# MVC Model View Presenter with Facade
-![mastermind](doc/mastermindWithFacade.svg)
-
-# VIEWS - CONTROLLERS depedency
-
-![mastermind](doc/mastermindViewsControllersFacade.svg)
+# MVC Model View Presenter with State
+![mastermind](doc/mastermindWithState.svg)
 
 
 

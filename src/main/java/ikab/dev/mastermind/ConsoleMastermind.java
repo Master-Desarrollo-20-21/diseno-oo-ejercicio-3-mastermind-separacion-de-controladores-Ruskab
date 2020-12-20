@@ -1,7 +1,6 @@
 package ikab.dev.mastermind;
 
 
-import ikab.dev.mastermind.controllers.Logic;
 import ikab.dev.mastermind.views.ConsoleView;
 import ikab.dev.mastermind.views.View;
 
@@ -12,7 +11,7 @@ class ConsoleMastermind extends Mastermind {
     }
 
     @Override
-    protected View createView(Logic logic) {
-        return new ConsoleView(logic);
+    protected View createView() {
+        return new ConsoleView();
     }
 }
