@@ -1,0 +1,68 @@
+@startuml
+skinparam {
+    BoundaryBackgroundColor #629EF9
+    BoundaryBorderColor black
+    BoundaryFontSize 12
+    BoundarySize 10
+    ControlBackgroundColor #b5bd68
+    ControlBorderColor #718c00
+    EntityBackgroundColor #F2AC4E
+    EntityBorderColor black
+    ArrowColor black
+
+}
+
+package mastermind {
+
+abstract class Mastermind
+class ConsoleMastermind
+
+package controllers {
+    class Controller
+    class ProposeCombinationController
+    class ResumeController
+    class StartController
+}
+
+package models {
+    class Game
+}
+
+package views {
+
+    class View
+    class ConsoleView
+
+    package console{
+        class StartView
+        class ProposedCombinationView
+        class GameView
+}
+
+
+
+}
+Mastermind *-- Game
+Mastermind *-- View
+Mastermind *---[#red]- StartController
+Mastermind *---[#red]- ProposeCombinationController
+Mastermind *---[#red]- ResumeController
+Mastermind <|-up- ConsoleMastermind
+View <|-- ConsoleView
+View -[#red]-> StartController
+View -[#red]-> ResumeController
+View -[#red]-> ProposeCombinationController
+
+ConsoleView *-- GameView
+ConsoleView *-- StartView
+
+GameView *-- ProposedCombinationView
+Controller <|-- StartController
+Controller <|-- ResumeController
+Controller <|-- ProposeCombinationController
+
+
+}
+
+
+@enduml
