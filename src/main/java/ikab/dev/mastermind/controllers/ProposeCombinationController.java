@@ -5,14 +5,15 @@ import ikab.dev.mastermind.models.Color;
 import ikab.dev.mastermind.models.Error;
 import ikab.dev.mastermind.models.Game;
 import ikab.dev.mastermind.models.ProposedCombination;
+import ikab.dev.mastermind.models.State;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProposeCombinationController extends Controller {
 
-    public ProposeCombinationController(Game game) {
-        super(game);
+    public ProposeCombinationController(Game game, State state) {
+        super(game, state);
     }
 
     public int getAttemptsCount() {
@@ -69,5 +70,9 @@ public class ProposeCombinationController extends Controller {
             }
         }
         return true;
+    }
+
+    public void finish() {
+        super.next();
     }
 }

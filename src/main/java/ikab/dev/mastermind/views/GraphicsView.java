@@ -1,31 +1,13 @@
 package ikab.dev.mastermind.views;
 
-import ikab.dev.mastermind.controllers.Logic;
+import ikab.dev.mastermind.controllers.Controller;
 
 public class GraphicsView extends View {
 
 
-    public GraphicsView(Logic logic) {
-        super(logic);
-    }
-
     @Override
-    protected void start() {
+    public void interact(Controller controller) {
 
     }
 
-    @Override
-    protected void play() {
-
-    }
-
-    @Override
-    protected boolean isEndGame() {
-        return false;
-    }
-
-    @Override
-    protected boolean isResume() {
-        return false;
-    }
 }
