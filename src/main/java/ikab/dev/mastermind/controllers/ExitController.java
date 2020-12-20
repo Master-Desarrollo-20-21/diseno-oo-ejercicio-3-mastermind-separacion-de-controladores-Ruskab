@@ -9,4 +9,9 @@ public class ExitController extends Controller {
     public ExitController(Game game, State state) {
         super(game, state);
     }
+
+    @Override
+    public void accept(ControllerVisitor controllerVisitor) {
+
+    }
 }

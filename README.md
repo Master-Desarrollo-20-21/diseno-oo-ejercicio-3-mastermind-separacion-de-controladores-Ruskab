@@ -1,5 +1,5 @@
-# MVC Model View Presenter with State
-![mastermind](doc/mastermindWithState.svg)
+# MVC Model View Presenter with double dispatch
+![mastermind](doc/mastermindWIthDoubleDisp.svg)
 
 
 

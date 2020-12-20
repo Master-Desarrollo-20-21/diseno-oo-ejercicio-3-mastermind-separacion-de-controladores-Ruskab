@@ -22,13 +22,21 @@ public class ConsoleView extends View {
 
     @Override
     public void interact(Controller controller) {
-        if (controller instanceof StartController) {
-            startView.start((StartController) controller);
-        } else if (controller instanceof ProposeCombinationController) {
-            gameView.interact((ProposeCombinationController) controller);
-        } else {
-            resumeView.interact((ResumeController) controller);
-        }
+        controller.accept(this);
+    }
 
+    @Override
+    public void visit(StartController startController) {
+        startView.start(startController);
+    }
+
+    @Override
+    public void visit(ProposeCombinationController proposeCombinationController) {
+        gameView.interact(proposeCombinationController);
+    }
+
+    @Override
+    public void visit(ResumeController resumeController) {
+        resumeView.interact(resumeController);
     }
 }

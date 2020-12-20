@@ -9,6 +9,11 @@ public class ResumeController extends Controller {
         super(game, state);
     }
 
+    @Override
+    public void accept(ControllerVisitor controllerVisitor) {
+        controllerVisitor.visit(this);
+    }
+
     public void reset() {
         this.state.reset();
     }
