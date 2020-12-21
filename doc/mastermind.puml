@@ -12,17 +12,6 @@ skinparam {
 
 package mastermind {
 
-abstract class Mastermind
-class ConsoleMastermind
-class GraphicMastermind
-
-package controllers {
-    class Controller
-    class ProposeCombinationController
-    class ResumeController
-    class StartController
-}
-
 package models {
 
     class Game
@@ -34,52 +23,7 @@ package models {
     class Error
 
 }
-package utils {
-    class Console
-}
 
-
-
-package views {
-
-    class ErrorView
-    class Message
-    class View
-    class GraphicView
-    class ConsoleView
-
-    package console{
-        class StartView
-        class ProposedCombinationView
-        class ResumeView
-        class GameView
-}
-
-
-    package graphics {
-
-    }
-
-}
-Mastermind .[#blue]down....> models
-Mastermind .[#blue]down.> views
-Mastermind .[#blue]down.> controllers
-
-views .[#blue]down.> utils
-
-Mastermind <|-up- ConsoleMastermind
-Mastermind <|-up- GraphicMastermind
-View <|-- ConsoleView
-View <|-- GraphicView
-
-
-ConsoleView *-- GameView
-ConsoleView *-- ResumeView
-ConsoleView *-- StartView
-GameView *-- ProposedCombinationView
-GameView .[#grey]..> Message
-ResumeView .[#grey].> Message
-ProposedCombinationView .[#grey].> ErrorView
 
 Combination <|-- ProposedCombination
 Combination <|-- SecretCombination
@@ -89,11 +33,6 @@ Combination *-- "*" Color
 Game *-- SecretCombination
 Game *-- "*" Attempt : playedAttempts
 Game *-- Attempt : currentAttempt
-GraphicView *-- graphics
-
-Controller <|-- StartController
-Controller <|-- ResumeController
-Controller <|-- ProposeCombinationController
 
 
 }

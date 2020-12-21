@@ -1,0 +1,102 @@
+@startuml
+skinparam {
+    BoundaryBackgroundColor #629EF9
+    BoundaryBorderColor black
+    BoundaryFontSize 12
+    BoundarySize 10
+    ControlBackgroundColor #b5bd68
+    ControlBorderColor #718c00
+    EntityBackgroundColor #F2AC4E
+    EntityBorderColor black
+    ArrowColor black
+}
+
+hide stereotype
+skinparam class {
+    BorderColor<<new>> green
+}
+
+package mastermind {
+
+abstract class Mastermind
+class ConsoleMastermind
+
+package controllers {
+    class Controller {
+        <color:green>accept(ControllerVisitor controllerVisitior)
+    }
+    class StateController
+    class Logic {
+    }
+    class ProposeCombinationController{
+    }
+    class StartController{
+    }
+    interface ControllerVisitor <<new>>{
+        <color:green>visit(StartController controller)
+        <color:green>visit(ProposeCombinationController controller)
+    }
+
+}
+package models {
+    class Game
+
+    class State
+    class StateValue
+}
+
+package views {
+
+    Abstract View {
+        interact(Controller controller)
+    }
+
+    class ConsoleView {
+        interact(Controller controller)
+        <color:green>visit(StartController controller)
+        <color:green>visit(ProposeCombinationController controller)
+    }
+
+    package console{
+        class StartView
+        class ProposedCombinationView
+        class GameView
+}
+
+
+
+}
+
+Mastermind *-- View
+Mastermind *---- Logic
+Mastermind <|-- ConsoleMastermind
+View <|-- ConsoleView
+ControllerVisitor <|-- View
+View ..> Controller
+
+ConsoleMastermind ..> ConsoleView
+
+Logic *-- Game
+Logic *-- State : currentState
+Logic *-- "*" StateController
+StateController *-- Controller
+StateController *-- State
+
+ConsoleView *-- GameView
+ConsoleView *-- StartView
+ConsoleView .[#green].> StartController
+ConsoleView .[#green].> ProposeCombinationController
+
+GameView *-- ProposedCombinationView
+GameView ..> ProposeCombinationController
+StartView ..> StartController
+ProposedCombinationView ..> ProposeCombinationController
+Controller <|-- StartController
+Controller <|-- ProposeCombinationController
+Controller --> Game
+Controller --> State
+State *-- StateValue
+}
+
+
+@enduml
