@@ -74,9 +74,9 @@ ConsoleView *-- GameView
 ConsoleView *-- StartView
 
 GameView *-- ProposedCombinationView
-GameView .[#red].> ProposeCombinationController
-StartView .[#red].> StartController
-ProposedCombinationView .[#red].> ProposeCombinationController
+GameView ..> ProposeCombinationController
+StartView ..> StartController
+ProposedCombinationView ..> ProposeCombinationController
 Controller <|-- StartController
 Controller <|-- ProposeCombinationController
 Controller --> Game
