@@ -8,94 +8,80 @@ skinparam {
     ControlBorderColor #718c00
     EntityBackgroundColor #F2AC4E
     EntityBorderColor black
+    ArrowColor black
+}
+
+hide stereotype
+skinparam class {
+    BorderColor<<new>> green
 }
 
 package mastermind {
 
 abstract class Mastermind
 class ConsoleMastermind
-class GraphicMastermind
 
 package controllers {
     class Controller
-    class ProposeCombinationController
-    class ResumeController
-    class StartController
+    class StateController <<new>>
+    class Logic {
+    }
+    class ProposeCombinationController{
+    }
+    class StartController{
+    }
 }
-
 package models {
-
     class Game
-    class Combination
-    class SecretCombination
-    class ProposedCombination
-    Enum Color
-    class Attempt
-    class Error
 
+    class State <<new>>
+    class StateValue <<new>>
 }
-package utils {
-    class Console
-}
-
-
 
 package views {
 
-    class ErrorView
-    class Message
-    class View
-    class GraphicView
+    Abstract View {
+        interact(Controller controller)
+    }
+
     class ConsoleView
 
     package console{
         class StartView
         class ProposedCombinationView
-        class ResumeView
         class GameView
 }
 
 
-    package graphics {
-
-    }
 
 }
-Mastermind .[#blue]down....> models
-Mastermind .[#blue]down.> views
-Mastermind .[#blue]down.> controllers
 
-views .[#blue]down.> utils
-
+Mastermind *-- View
+Mastermind *---- Logic
 Mastermind <|-up- ConsoleMastermind
-Mastermind <|-up- GraphicMastermind
 View <|-- ConsoleView
-View <|-- GraphicView
+View ..> Controller
+ConsoleView .[#red].> StartController
+ConsoleView .[#red].> ProposeCombinationController
 
+Logic *-- Game
+Logic *-[#green]- State : currentState
+Logic *-[#green]- "*" StateController
+StateController *-[#green]- Controller
+StateController *-[#green]- State
 
 ConsoleView *-- GameView
-ConsoleView *-- ResumeView
 ConsoleView *-- StartView
+
 GameView *-- ProposedCombinationView
-GameView .[#grey]..> Message
-ResumeView .[#grey].> Message
-ProposedCombinationView .[#grey].> ErrorView
-
-Combination <|-- ProposedCombination
-Combination <|-- SecretCombination
-Attempt o-- ProposedCombination
-Attempt o-- SecretCombination
-Combination *-- "*" Color
-Game *-- SecretCombination
-Game *-- "*" Attempt : playedAttempts
-Game *-- Attempt : currentAttempt
-GraphicView *-- graphics
-
+GameView .[#red].> ProposeCombinationController
+StartView .[#red].> StartController
+ProposedCombinationView .[#red].> ProposeCombinationController
 Controller <|-- StartController
-Controller <|-- ResumeController
 Controller <|-- ProposeCombinationController
-
-
+Controller --> Game
+Controller -[#green]--> State
+State *-- StateValue
 }
 
 
