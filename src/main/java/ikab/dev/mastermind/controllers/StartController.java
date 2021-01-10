@@ -13,8 +13,4 @@ public class StartController extends Controller {
     public void accept(ControllerVisitor controllerVisitor) {
         controllerVisitor.visit(this);
     }
-
-    public void initGame() {
-        game.init();
-    }
 }

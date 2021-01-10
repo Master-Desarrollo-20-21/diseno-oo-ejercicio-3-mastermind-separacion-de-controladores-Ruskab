@@ -21,6 +21,7 @@ public enum Color {
                 return color;
             }
         }
+        assert false;
         return null;
     }
 

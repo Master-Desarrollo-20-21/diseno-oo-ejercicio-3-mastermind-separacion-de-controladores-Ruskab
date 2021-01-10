@@ -16,4 +16,12 @@ public class ProposedCombination extends Combination {
         return colorCodes.toString();
     }
 
+    public boolean hasColor(Color color, int position) {
+        return colors.get(position).equals(color);
+    }
+
+    public boolean hasColor(Color color) {
+        return colors.contains(color);
+    }
+
 }

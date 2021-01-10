@@ -6,24 +6,31 @@ import java.util.List;
 public class Game {
 
     private SecretCombination secretCombination;
-    private Attempt currentAttempt;
     private List<Attempt> playedAttempts;
 
     public Game() {
         this.init();
     }
 
+    public void init() {
+        this.playedAttempts = new ArrayList<>();
+        this.secretCombination = new SecretCombination();
+    }
+
     public void playCombination(ProposedCombination proposedCombination) {
-        currentAttempt = new Attempt(proposedCombination, secretCombination);
-        playedAttempts.add(currentAttempt);
+        playedAttempts.add(new Attempt(proposedCombination, secretCombination));
     }
 
     public boolean isContinuePlaying() {
-        return playedAttempts.size() < 10 && !currentAttempt.isWinnerAttempt();
+        return playedAttempts.size() < 10 && !isWinnerGame();
     }
 
     public boolean isWinnerGame() {
-        return currentAttempt.isWinnerAttempt();
+        return getLastAttempt().isWinner();
+    }
+
+    private Attempt getLastAttempt() {
+        return playedAttempts.get(playedAttempts.size() - 1);
     }
 
     public int getAttemptsCount() {
@@ -34,9 +41,5 @@ public class Game {
         return playedAttempts;
     }
 
-    public void init() {
-        this.playedAttempts = new ArrayList<>();
-        this.currentAttempt = null;
-        this.secretCombination = new SecretCombination();
-    }
+
 }

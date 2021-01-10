@@ -19,5 +19,4 @@ public abstract class Controller {
         this.state.next();
     }
 
-
 }

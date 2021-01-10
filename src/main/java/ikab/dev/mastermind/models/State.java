@@ -1,5 +1,7 @@
 package ikab.dev.mastermind.models;
 
+import static ikab.dev.mastermind.models.StateValue.EXIT;
+
 public class State {
 
     private StateValue stateValue;
@@ -18,6 +20,10 @@ public class State {
 
     public StateValue getValueState() {
         return this.stateValue;
+    }
+
+    public boolean isExit() {
+        return EXIT.equals(stateValue);
     }
 
 }

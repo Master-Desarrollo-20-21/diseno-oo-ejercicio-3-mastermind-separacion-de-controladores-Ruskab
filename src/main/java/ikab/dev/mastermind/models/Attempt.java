@@ -10,7 +10,7 @@ public class Attempt {
         this.secretCombination = secretCombination;
     }
 
-    public boolean isWinnerAttempt() {
+    public boolean isWinner() {
         return secretCombination.isCorrectCombination(proposedCombination);
     }
 

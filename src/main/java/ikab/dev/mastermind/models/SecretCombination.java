@@ -20,20 +20,20 @@ public class SecretCombination extends Combination {
         return this.getColors().equals(proposedCombination.getColors());
     }
 
-    public int getWhites(Combination proposedCombination) {
+    public int getWhites(ProposedCombination proposedCombination) {
         int whites = 0;
         for (int i = 0; i < this.getColors().size(); i++) {
-            if (this.getColors().get(i).equals(proposedCombination.getColors().get(i))) {
+            if (proposedCombination.hasColor(this.getColors().get(i), i)) {
                 whites++;
             }
         }
         return whites;
     }
 
-    public int getBlacks(Combination proposedCombination) {
+    public int getBlacks(ProposedCombination proposedCombination) {
         int blacks = 0;
         for (Color color : proposedCombination.getColors()) {
-            if (this.getColors().contains(color)) {
+            if (proposedCombination.hasColor(color)) {
                 blacks++;
             }
         }
