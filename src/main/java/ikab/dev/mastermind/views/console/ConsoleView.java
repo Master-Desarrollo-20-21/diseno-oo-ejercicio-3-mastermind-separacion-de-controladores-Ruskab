@@ -1,23 +1,21 @@
-package ikab.dev.mastermind.views;
+package ikab.dev.mastermind.views.console;
 
 import ikab.dev.mastermind.controllers.Controller;
 import ikab.dev.mastermind.controllers.ProposeCombinationController;
 import ikab.dev.mastermind.controllers.ResumeController;
 import ikab.dev.mastermind.controllers.StartController;
-import ikab.dev.mastermind.views.console.GameView;
-import ikab.dev.mastermind.views.console.ResumeView;
-import ikab.dev.mastermind.views.console.StartView;
+import ikab.dev.mastermind.views.View;
 
 public class ConsoleView extends View {
 
+    private final StartView startView;
     private final GameView gameView;
     private final ResumeView resumeView;
-    private final StartView startView;
 
     public ConsoleView() {
+        this.startView = new StartView();
         this.gameView = new GameView();
         this.resumeView = new ResumeView();
-        this.startView = new StartView();
     }
 
     @Override
@@ -27,7 +25,7 @@ public class ConsoleView extends View {
 
     @Override
     public void visit(StartController startController) {
-        startView.start(startController);
+        startView.interact(startController);
     }
 
     @Override
