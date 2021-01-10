@@ -7,7 +7,7 @@ import static ikab.dev.mastermind.views.Message.TITLE;
 
 public class StartView {
 
-    public void start(StartController startController) {
+    public void interact(StartController startController) {
         startController.initGame();
         Console.getInstance().write(TITLE.getMessage());
         startController.next();

@@ -2,7 +2,8 @@ package ikab.dev.mastermind.views.console;
 
 import ikab.dev.mastermind.controllers.ResumeController;
 import ikab.dev.mastermind.utils.Console;
-import ikab.dev.mastermind.views.Message;
+
+import static ikab.dev.mastermind.views.Message.RESUME;
 
 public class ResumeView {
 
@@ -10,14 +11,14 @@ public class ResumeView {
         if (isResume()) {
             resumeController.reset();
         } else {
-            resumeController.finish();
+            resumeController.next();
         }
     }
 
     public boolean isResume() {
         char input;
         do {
-            input = Console.getInstance().readChar(Message.RESUME.getMessage());
+            input = Console.getInstance().readChar(RESUME.getMessage());
         } while (!isValidInput(input));
         return 'y' == input;
     }

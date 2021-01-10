@@ -57,6 +57,8 @@ public class Console {
         return charValue;
     }
 
+    
+
     public void writeln() {
         System.out.println();
     }

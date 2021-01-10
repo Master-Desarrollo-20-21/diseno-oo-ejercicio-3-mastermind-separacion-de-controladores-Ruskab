@@ -76,8 +76,4 @@ public class ProposeCombinationController extends Controller {
         }
         return true;
     }
-
-    public void finish() {
-        super.next();
-    }
 }

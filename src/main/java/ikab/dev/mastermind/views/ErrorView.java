@@ -16,6 +16,8 @@ public class ErrorView {
     }
 
     public void writeln() {
-        Console.getInstance().writeln(error.getMessage());
+        if (!error.getMessage().isBlank()) {
+            Console.getInstance().writeln(error.getMessage());
+        }
     }
 }

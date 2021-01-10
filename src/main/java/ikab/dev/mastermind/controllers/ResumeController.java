@@ -17,8 +17,4 @@ public class ResumeController extends Controller {
     public void reset() {
         this.state.reset();
     }
-
-    public void finish() {
-        super.next();
-    }
 }

@@ -1,6 +1,5 @@
 package ikab.dev.mastermind.views.console;
 
-import ikab.dev.mastermind.controllers.Logic;
 import ikab.dev.mastermind.controllers.ProposeCombinationController;
 import ikab.dev.mastermind.models.Error;
 import ikab.dev.mastermind.models.ProposedCombination;

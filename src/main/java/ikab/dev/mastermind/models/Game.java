@@ -10,8 +10,7 @@ public class Game {
     private List<Attempt> playedAttempts;
 
     public Game() {
-        playedAttempts = new ArrayList<>();
-        secretCombination = new SecretCombination();
+        this.init();
     }
 
     public void playCombination(ProposedCombination proposedCombination) {
